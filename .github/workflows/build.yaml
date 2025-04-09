@@ -34,22 +34,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup JAVA
-        if: startsWith(matrix.platform,'android')
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: 17
-
-      - name: Setup NDK
-        if: startsWith(matrix.platform,'android')
-        uses: nttld/setup-ndk@v1
-        id: setup-ndk
-        with:
-          ndk-version: r26b
-          add-to-path: true
-          link-to-sdk: true
-
       - name: Setup Android Signing
         if: startsWith(matrix.platform,'android')
         run: |
