@@ -41,17 +41,14 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Setup NDK
-        if: startsWith(matrix.platform,'android')
-        uses: android-actions/setup-android@v3
-
       - name: Install NDK
         if: startsWith(matrix.platform,'android')
         run: |
-          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager "ndk;$VERSION"
+          echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;$VERSION"
           echo "ANDROID_NDK=$ANDROID_HOME/ndk/$VERSION" >> $GITHUB_ENV
-          echo "ANDROID_NDK" >> $GITHUB_PATH
+          echo "$ANDROID_HOME/ndk/$VERSION" >> $GITHUB_PATH
+          echo $ANDROID_NDK
         env:
           VERSION: 28.0.13004108
 
