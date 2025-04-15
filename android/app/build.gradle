@@ -31,7 +31,8 @@ def isRelease = defStoreFile.exists() && defStorePassword != null && defKeyAlias
 
 android {
     namespace "com.follow.clash"
-    compileSdkVersion 35
+    compileSdk 35
+    ndkVersion = "28.0.13004108"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
